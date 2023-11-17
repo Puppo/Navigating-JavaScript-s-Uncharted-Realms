@@ -1,5 +1,5 @@
 // import {buildUi} from './src/weakSet.js'
-import {buildUi} from './src/weakMap.js'
+import { buildUi } from './src/weakMap.js'
 import './style.css'
 
 document.querySelector('#app').innerHTML = `

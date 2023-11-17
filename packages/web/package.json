@@ -2,15 +2,21 @@
   "name": "web",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "type": "module",
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
+    "lint:check": "eslint .",
+    "lint:fix": "eslint --fix ."
   },
   "devDependencies": {
-    "vite": "^4.4.5"
+    "eslint": "^8.53.0",
+    "vite": "^4.4.5",
+    "vite-plugin-eslint": "^1.8.1"
   },
   "author": "",
   "license": "ISC"

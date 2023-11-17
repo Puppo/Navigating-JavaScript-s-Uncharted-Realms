@@ -1,28 +1,15 @@
-import {
-  input,
-  select
-} from '@inquirer/prompts'
-import {
-  createUser,
-  roleChecker
-} from './users.js'
+import { input, select } from '@inquirer/prompts'
+import { createUser, roleChecker } from './users.js'
 
-function buildUsers () {
+function buildUsers() {
   const user1 = createUser('john_doe', 'password123', 'user')
 
-  const user2 = createUser(
-    'jane_doe',
-    'password456',
-    'admin'
-  )
+  const user2 = createUser('jane_doe', 'password456', 'admin')
 
-  return [
-    user1,
-    user2
-  ]
+  return [user1, user2]
 }
 
-function showUsers () {
+function showUsers() {
   const [user1, user2] = buildUsers()
   console.log('------------------')
   console.log('keys')
@@ -40,7 +27,7 @@ function showUsers () {
   }
 }
 
-function hackUserRole () {
+function hackUserRole() {
   const [user1] = buildUsers()
   console.log('-----------')
   console.log('user1', roleChecker(user1))
@@ -49,30 +36,35 @@ function hackUserRole () {
   console.log('user1', roleChecker(user1))
 }
 
-async function selection () {
+async function selection() {
   console.clear()
-  const options = [{
-    name: 'Show users',
-    value: showUsers
-  }, {
-    name: 'Hack user role',
-    value: hackUserRole
-  }]
+  const options = [
+    {
+      name: 'Show users',
+      value: showUsers,
+    },
+    {
+      name: 'Hack user role',
+      value: hackUserRole,
+    },
+  ]
   const selection = await select({
     message: `[Commons]
 What do you want to show?`,
-    choices: options
+    choices: options,
   })
 
   selection()
 }
 
-export default async function main () {
+export default async function main() {
   do {
     await selection()
-  } while (await input({
-    message: `[Commons]
+  } while (
+    (await input({
+      message: `[Commons]
 Do you want to continue? (y/n)`,
-    default: 'y'
-  }) === 'y')
+      default: 'y',
+    })) === 'y'
+  )
 }

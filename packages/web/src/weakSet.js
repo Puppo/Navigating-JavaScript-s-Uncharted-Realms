@@ -1,4 +1,5 @@
 const weakSet = new WeakSet()
+let counter = 0
 
 function registerOnClick(container) {
   const reset = container.querySelector('#reset')
@@ -14,7 +15,7 @@ function registerOnClick(container) {
       weakSet.add(e.target)
 
       const currentButtons = Array.from(buttons.querySelectorAll('button'))
-      const allButtonsClicked = currentButtons.every(e => weakSet.has(e))
+      const allButtonsClicked = currentButtons.every((e) => weakSet.has(e))
       if (allButtonsClicked) {
         alert('All buttons clicked!')
       }
@@ -39,7 +40,6 @@ function buildResetButton(container) {
   div.appendChild(input)
 }
 
-let counter = 0
 export function buildUi(selector) {
   const container = document.querySelector(selector)
   buildResetButton(container)
@@ -48,5 +48,5 @@ export function buildUi(selector) {
 
   setInterval(() => {
     console.log('weakSet', weakSet)
-  }, 3000);
+  }, 3000)
 }

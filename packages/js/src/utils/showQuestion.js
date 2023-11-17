@@ -1,8 +1,7 @@
 import {input} from '@inquirer/prompts'
-export function showQuestion (
-  selection
-) {
+export function showQuestion(selection) {
   return async () => {
+    // eslint-disable-next-line no-constant-condition
     while (true) {
       console.clear()
       const option = await selection()
@@ -13,7 +12,7 @@ export function showQuestion (
         option()
       }
       await input({
-        message: 'Press a key to continue'
+        message: 'Press a key to continue',
       })
     }
   }

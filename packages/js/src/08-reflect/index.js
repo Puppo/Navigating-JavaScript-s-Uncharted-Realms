@@ -12,9 +12,9 @@ function buildUsers() {
 function showUsers() {
   const [user1, user2] = buildUsers()
   console.log('------------------')
-  console.log('keys')
-  console.log(Object.keys(user1))
-  console.log(Object.keys(user2))
+  console.log('ownKeys')
+  console.log(Reflect.ownKeys(user1))
+  console.log(Reflect.ownKeys(user2))
   console.log('------------------')
   console.log('user1 keys')
   for (const key in user1) {
@@ -33,6 +33,16 @@ function showUsersRole() {
   console.log('user1', roleChecker(user1))
   console.log('------------------')
   console.log('user2', roleChecker(user2))
+  console.log('------------------')
+}
+
+function hackUserRole() {
+  const [user1] = buildUsers()
+  console.log('------------------')
+  console.log('user1', roleChecker(user1))
+  console.log('------------------')
+  user1.role = 'admin'
+  console.log(roleChecker(user1))
 }
 
 async function selection() {
@@ -46,9 +56,13 @@ async function selection() {
       name: 'Show users role',
       value: showUsersRole,
     },
+    {
+      name: 'Hack user role',
+      value: hackUserRole,
+    },
   ]
   const selection = await select({
-    message: `[WeakSet]
+    message: `[Reflect]
 What do you want to do?`,
     choices: options,
   })
@@ -61,7 +75,7 @@ export default async function main() {
     await selection()
   } while (
     (await input({
-      message: `[WeakSet]
+      message: `[Reflect]
 Do you want to continue? (y/n)`,
       default: 'y',
     })) === 'y'

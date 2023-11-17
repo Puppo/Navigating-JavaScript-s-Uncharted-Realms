@@ -7,7 +7,7 @@ const handlers = {
     return name in _target
   },
   ownKeys: function (_target) {
-    return Object.keys(_target).filter(key => omitKeys.indexOf(key) === -1)
+    return Object.keys(_target).filter((key) => omitKeys.indexOf(key) === -1)
   },
   get: function (_target, name) {
     if (name === 'password') {
@@ -19,24 +19,25 @@ const handlers = {
     if (name === 'role') {
       throw new Error('Cannot change role')
     }
-    return target[name] = value
-  }
+    _target[name] = value
+    return true
+  },
 }
 
-export function createUser (username, password, role) {
+export function createUser(username, password, role) {
   const user = {
     id: Math.floor(Math.random() * 100),
     username,
     password,
-    role
+    role,
   }
 
   return new Proxy(user, handlers)
 }
 
-export function roleChecker (user) {
+export function roleChecker(user) {
   if (user.role === 'admin') {
     return 'You have admin privileges!'
   }
   return 'You are a user.'
-};
+}

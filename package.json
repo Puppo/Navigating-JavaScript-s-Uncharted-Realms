@@ -5,15 +5,12 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "format": "npm run lint -w packages/*",
-    "start": "npm run start -w packages/*"
+    "format": "npm run format:write --ws",
+    "lint": "npm run lint:fix --ws"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "standard": "^17.1.0"
-  },
   "workspaces": [
     "packages/js",
     "packages/web"

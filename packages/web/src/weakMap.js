@@ -14,7 +14,7 @@ function registerOnClick(container) {
       weakMap.set(e.target, true)
 
       const currentButtons = Array.from(buttons.querySelectorAll('button'))
-      const allButtonsClicked = currentButtons.every(e => weakMap.get(e))
+      const allButtonsClicked = currentButtons.every((e) => weakMap.get(e))
       if (allButtonsClicked) {
         alert('All buttons clicked!')
       }
@@ -24,7 +24,7 @@ function registerOnClick(container) {
 
 function buildButtons(container) {
   const div = container.querySelector('#buttons')
-  div.querySelectorAll('button').forEach(e => e.remove())
+  div.querySelectorAll('button').forEach((e) => e.remove())
   for (let i = 0; i < 3; i++) {
     const input = document.createElement('button')
     input.innerText = `Button ${++counter}`
@@ -49,5 +49,5 @@ export function buildUi(selector) {
 
   setInterval(() => {
     console.log('weakMap', weakMap)
-  }, 3000);
+  }, 3000)
 }

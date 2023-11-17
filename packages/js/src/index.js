@@ -6,37 +6,50 @@ import mainWellKnowSymbols from './04-well-know-symbols/index.js'
 import mainWeakMaps from './05-weakMaps/index.js'
 import mainWeakSets from './06-weakSets/index.js'
 import mainProxies from './07-proxies/index.js'
+import mainReflect from './08-reflect/index.js'
 
-
-async function selection () {
+async function selection() {
   console.clear()
-  const options = [{
-    name: 'Common',
-    value: mainCommon
-  }, {
-    name: 'Object Property Descriptors',
-    value: mainObjectPropertyDescriptors
-  }, {
-    name: 'Symbols',
-    value: mainSymbols
-  }, {
-    name: 'Well know Symbols',
-    value: mainWellKnowSymbols
-  }, {
-    name: 'WeakMaps',
-    value: mainWeakMaps
-  }, {
-    name: 'WeakSets',
-    value: mainWeakSets
-  }, {
-    name: 'Proxies',
-    value: mainProxies
-  }, {
-    name: '👋 EXIT 👋',
-  }]
+  const options = [
+    {
+      name: 'Common',
+      value: mainCommon,
+    },
+    {
+      name: 'Object Property Descriptors',
+      value: mainObjectPropertyDescriptors,
+    },
+    {
+      name: 'Symbols',
+      value: mainSymbols,
+    },
+    {
+      name: 'Well know Symbols',
+      value: mainWellKnowSymbols,
+    },
+    {
+      name: 'WeakMaps',
+      value: mainWeakMaps,
+    },
+    {
+      name: 'WeakSets',
+      value: mainWeakSets,
+    },
+    {
+      name: 'Proxies',
+      value: mainProxies,
+    },
+    {
+      name: 'Reflect',
+      value: mainReflect,
+    },
+    {
+      name: '👋 EXIT 👋',
+    },
+  ]
   const selection = await select({
     message: 'What do you want to show?',
-    choices: options
+    choices: options,
   })
 
   if (!selection) {
@@ -47,7 +60,8 @@ async function selection () {
   await selection()
 }
 
-async function main () {
+async function main() {
+  // eslint-disable-next-line no-constant-condition
   while (true) {
     await selection()
   }
