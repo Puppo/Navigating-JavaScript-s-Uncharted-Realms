@@ -1,0 +1,21 @@
+{
+  "name": "metaprogramming-talk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "format": "npm run lint -w packages/*",
+    "start": "npm run start -w packages/*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "standard": "^17.1.0"
+  },
+  "workspaces": [
+    "packages/js",
+    "packages/web"
+  ]
+}
